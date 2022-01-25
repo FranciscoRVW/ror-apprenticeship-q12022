@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_202503) do
+ActiveRecord::Schema.define(version: 2022_01_25_203330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2022_01_25_202503) do
     t.index ["pokemon_id"], name: "index_pokemon_abilities_on_pokemon_id"
   end
 
+  create_table "pokemon_trainers", force: :cascade do |t|
+    t.bigint "pokemon_id"
+    t.bigint "trainer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pokemon_id"], name: "index_pokemon_trainers_on_pokemon_id"
+    t.index ["trainer_id"], name: "index_pokemon_trainers_on_trainer_id"
+  end
+
   create_table "pokemon_types", force: :cascade do |t|
     t.bigint "pokemon_id"
     t.bigint "type_id"
@@ -40,6 +49,12 @@ ActiveRecord::Schema.define(version: 2022_01_25_202503) do
   end
 
   create_table "pokemons", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trainers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

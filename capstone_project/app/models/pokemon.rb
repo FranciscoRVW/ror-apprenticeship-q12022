@@ -1,4 +1,7 @@
 class Pokemon < ApplicationRecord
+  has_many :pokemon_trainers
+  has_many :trainers, :through => :pokemon_trainers
+
   has_many :pokemon_abilities
   has_many :abilities, :through => :pokemon_abilities
 
