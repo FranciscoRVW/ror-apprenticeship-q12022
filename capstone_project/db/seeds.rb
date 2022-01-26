@@ -10,19 +10,15 @@ puts '-----------------------------'
 puts 'Beginning seeding process'
 puts '-----------------------------'
 puts
-# require_relative './model_seeders/pokemon_seeder'
-
-
-# Seeder for Type model
-
-#   puts '-----------------------------'
-#   puts 'Type seeding process'
-#   puts '-----------------------------'
-#   puts
-
+puts '-----------------------------'
+puts 'Making API calls'
+puts '-----------------------------'
+puts
 
 pokemon_data = PokemonServices::GetPokemons.new
 
 pokemon_data.call
-p pokemon_data.types
-p pokemon_data.abilities.size
+puts "Gathered data:" 
+puts "#{pokemon_data.types.size} Pokemon types."
+puts "#{pokemon_data.abilities.size} Pokemon abilities."
+puts "#{pokemon_data.pokemons.size} Pokemons."

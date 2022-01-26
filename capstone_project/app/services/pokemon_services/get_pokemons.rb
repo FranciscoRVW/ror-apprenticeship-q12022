@@ -5,7 +5,7 @@ module PokemonServices
     def initialize
       @types = []
       @abilities = []
-      @pokemons = {}
+      @pokemons = []
     end
 
     def call
@@ -39,7 +39,9 @@ module PokemonServices
     end
 
     def get_pokemons
-      # TODO
+      [*1..9].each do |i|
+        @pokemons.push( HTTParty.get("https://pokeapi.co/api/v2/pokemon/#{i}"))
+      end
     end
   end # class_end
 end # module_end
