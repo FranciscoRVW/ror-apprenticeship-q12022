@@ -1,2 +1,33 @@
-<h1>Pokemons#show</h1>
-<p>Find me in app/views/pokemons/show.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+<%= render @pokemon %>
+
+<div>
+  <%= link_to "Edit this pokemon", edit_pokemon_path(@pokemon) %> |
+  <%= link_to "Back to pokemons", pokemons_path %>
+
+  <h1>Name: <%= @pokemon.name.capitalize %> </h1>
+
+  <ul>
+    <li> National number: <%= @pokemon.nat_number %> </li>
+    <li> Weight: <%= @pokemon.weight / 10.0 %> kg</li>
+    <li> Height: <%= @pokemon.height / 10.0%> m</li>
+    <li> Types:
+      <ul>
+        <% @pokemon.types.each do |type| %>
+          <li><%= type.name.capitalize %> </li>
+        <% end %>
+      </ul>
+    </li>
+    <li> Abilities:
+      <ul>
+        <% @pokemon.abilities.each do |ability| %>
+          <li><%= ability.name.capitalize %> </li>
+        <% end %>
+      </ul>
+    </li>
+
+  </ul>
+  
+  <%= button_to "Destroy this pokemon", @pokemon, method: :destroy %>
+</div>
