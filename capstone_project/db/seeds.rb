@@ -82,3 +82,15 @@ end
 
 puts
 puts "Pokemons loaded: #{pokemons_loaded}"
+
+
+puts
+puts '-Loading trainer-'
+puts
+
+ash = Trainer.create(name:'Ash')
+pokemons = %w[bulbasaur charmander squirtle]
+pokemons.each {|pokemon| ash.pokemons << Pokemon.find_by_name(pokemon)}
+
+puts "Trainer created: #{ash.name}"
+puts "Pokemons loaded to trainer: #{pokemons}"
