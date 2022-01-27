@@ -10,5 +10,5 @@ class Pokemon < ApplicationRecord
   has_many :pokemon_types
   has_many :types, through: :pokemon_types
 
-  validates :name, presence: true, uniqueness: true, case_sensitive: true
+  validates :name, presence: true, uniqueness: true, confirmation: {case_sensitive: true}
 end
