@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
+
+# This file should contain all the record creation needed to seed the databasre with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -15,10 +16,15 @@ puts 'Making API calls'
 puts '-----------------------------'
 puts
 
+abilities_data = PokemonServices::GetAbilities.new
 pokemon_data = PokemonServices::GetPokemons.new
+types_data = PokemonServices::GetTypes.new
 
+abilities_data.call
 pokemon_data.call
-puts "Gathered data:" 
-puts "#{pokemon_data.types.size} Pokemon types."
-puts "#{pokemon_data.abilities.size} Pokemon abilities."
+types_data.call
+
+puts 'Gathered data:'
+puts "#{abilities_data.abilities.size} Pokemon abilities."
+puts "#{types_data.types.size} Pokemon types."
 puts "#{pokemon_data.pokemons.size} Pokemons."
